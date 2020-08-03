@@ -26,7 +26,18 @@ class WaitUtil(object):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 30)
 
-    def frame_available_and_switch_to_it(self, locationType, locatorExpression):
+    def presenceOfElementLocated(self, locatorMethod, locatorExpression, *arg):
+        """显式等待页面元素出现在DOM中，但并不一定可见，存在则返回该页面元素对象"""
+        try:
+            if self.locationTypeDict.has_key(locatorMethod.lower()):
+                self.wait.until(
+                    EC.presence_of_all_elements_located((
+                        self.locationTypeDict[locatorMethod.lower()],
+                        locatorExpression)))
+        except Exception as e:
+            raise e
+
+    def frameToBeAvailableAndSwitchToIt(self, locationType, locatorExpression, *arg):
         '''检查frame是否存在，存在则切换进frame控件中'''
         try:
             self.wait.until(EC.frame_to_be_available_and_switch_to_it((self.locationTypeDict[locationType.lower()],
@@ -34,14 +45,14 @@ class WaitUtil(object):
         except Exception as e:
             raise e
 
-
-
-    def visibility_element_located(self, locationType, locatorExpression):
-        '''显示等待页面元素的出现'''
+    def visibilityOfElementLocated(self, locationType, locatorExpression, *arg):
+        '''显示等待页面元素出现在DOM中，并且可见，存在则返回该页面元素对象'''
         try:
-            element = self.wait.until(EC.visibility_of_element_located((self.locationTypeDict[locationType.lower()],
-                                                                        locatorExpression)))
-            return element
+            self.wait.until(
+                EC.visibility_of_all_elements_located((
+                    self.locationTypeDict[locationType.lower()], locatorExpression
+                ))
+            )
         except Exception as e:
             raise e
 
@@ -51,7 +62,7 @@ if __name__ == '__main__':
     driver = webdriver.Chrome(executable_path="c:\\chromedriver")
     driver.get("http://mail.163.com")
     waitUtil = WaitUtil(driver)
-    waitUtil.frame_available_and_switch_to_it("id", "x-URS-iframe")
-    e = waitUtil.visibility_element_located("xpath", "//input[@name='email']")
-    e.send_keys("success")
+    waitUtil.frameToBeAvailableAndSwitchToIt("id", "x-URS-iframe")
+    waitUtil.visibilityOfElementLocated("xpath", "//input[@name='email']")
+    waitUtil.presenceOfElementLocated("xpath", "//input[@name='email']")
     driver.quit()

@@ -15,36 +15,30 @@ firefoxDriverFilePath = "c:\\FirefoxDriverServer"
 
 # 获取当前文件所在目录的父目录的绝对路径
 parentDirPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# 异常截图存放目录绝对路径
 screenPicturesDir = parentDirPath + "\\exceptionPictures\\"
 
 # 获取存放页面元素定位表达式文件的绝对路径
-pageElementLocatorPath = parentDirPath + u"\\config\\PageElementLocator.ini"
+# pageElementLocatorPath = parentDirPath + u"\\config\\PageElementLocator.ini"
 
 # 获取数据文件存放绝对路径
-dataFilePath = parentDirPath + u"\\testData\\163邮箱联系人.xlsx"
+dataFilePath = parentDirPath + u"\\testData\\163邮箱发送邮件.xlsx"
 
-# 163账号工作表中，每列对应的数字序号
-account_username = 2
-account_password = 3
-account_dataBook = 4
-account_isExecute = 5
-account_testResult = 6
+# 测试数据文件中，测试用例表中部分列对应的数字序号
+testCase_testCaseName = 2
+testCase_testStepSheetName = 4
+testCase_isExecute = 5
+testCase_runTime = 6
+testCase_testResult = 7
 
-# 联系人工作表中，每列对应的数字序号
-contacts_contactPersonName = 2
-contacts_contactPersonEmail = 3
-contacts_isStar = 4
-contacts_contactPersonMobile = 5
-contacts_contactPersonComment = 6
-contacts_assertKeyWords = 7
-contacts_isExecute = 8
-contacts_runTime = 9
-contacts_testResult = 10
-
-def main(argv):
-    """Do someting..."""
-    return 0
-
-
-if __name__ == '__main__':
-    exit(main(sys.argv[1:]))
+# 用例步骤表中，部分列对应的数字序号
+testStep_testStepDescribe = 2
+testStep_keyWords = 3
+testStep_locationType = 4
+testStep_locatorExpression = 5
+testStep_operateValue = 6
+testStep_runTime = 7
+testStep_testResult = 8
+testStep_errorInfo = 9
+testStep_errorPic = 10

@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2faaa54c-ec3e-44d6-a204-dbb03857970a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/AutoTest_From_Git.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KeyWordsFrameWork/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KeyWordsFrameWork/action/PageAction.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KeyWordsFrameWork/action/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KeyWordsFrameWork/config/VarConfig.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KeyWordsFrameWork/util/DirAndTime.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataDrivenFrameWork/163账号.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/DataDrivenFrameWork/163账号.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KeyWordsFrameWork/util/TestSendMailWithAttachment.py" beforeDir="false" afterPath="$PROJECT_DIR$/KeyWordsFrameWork/testScripts/TestSendMailWithAttachment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KeyWordsFrameWork/util/WaitUtil.py" beforeDir="false" afterPath="$PROJECT_DIR$/KeyWordsFrameWork/util/WaitUtil.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataDrivenFrameWork/luban.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataDrivenFrameWork/mail_126.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KeyWordsFrameWork/util/DirAndTime.py" beforeDir="false" afterPath="$PROJECT_DIR$/KeyWordsFrameWork/util/DirAndTime.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/KeyWordsFrameWork/testScripts/TestSendMailWithAttachment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="112" column="56" lean-forward="true" selection-start-line="112" selection-start-column="56" selection-end-line="112" selection-end-column="56" />
+            <state relative-caret-position="1055">
+              <caret line="109" column="40" selection-start-line="109" selection-start-column="40" selection-end-line="109" selection-end-column="40" />
               <folding>
                 <element signature="e#125#153#0" expanded="true" />
               </folding>
@@ -36,10 +27,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DataDrivenFrameWork/mail_126.py">
+        <entry file="file://$PROJECT_DIR$/DataDrivenFrameWork/luban.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="75" column="8" lean-forward="true" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
+            <state relative-caret-position="137">
+              <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+              <folding>
+                <element signature="e#102#132#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/KeyWordsFrameWork/util/DirAndTime.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="2">
+              <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
               <folding>
                 <element signature="e#126#141#0" expanded="true" />
               </folding>
@@ -80,17 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://C:/Python27/Lib/site-packages/selenium/webdriver/remote/webdriver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="1015" column="8" selection-start-line="1015" selection-start-column="8" selection-end-line="1015" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/KeyWordsFrameWork/config/VarConfig.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="-1010">
+              <caret line="180" column="31" selection-start-line="180" selection-start-column="22" selection-end-line="180" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -104,6 +89,12 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>find_element_by_xpath</find>
+      <find>send_keys</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -111,18 +102,20 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/KeyWordsFrameWork/config/VarConfig.py" />
-        <option value="$PROJECT_DIR$/KeyWordsFrameWork/util/DirAndTime.py" />
         <option value="$PROJECT_DIR$/KeyWordsFrameWork/util/WaitUtil.py" />
         <option value="$PROJECT_DIR$/KeyWordsFrameWork/action/PageAction.py" />
         <option value="$PROJECT_DIR$/KeyWordsFrameWork/testScripts/TestSendMailWithAttachment.py" />
+        <option value="$PROJECT_DIR$/KeyWordsFrameWork/util/DirAndTime.py" />
+        <option value="$PROJECT_DIR$/DataDrivenFrameWork/mail_126.py" />
+        <option value="$PROJECT_DIR$/DataDrivenFrameWork/luban.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1939" />
-    <option name="height" value="1049" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-13" />
+    <option name="y" value="-13" />
+    <option name="width" value="1944" />
+    <option name="height" value="1104" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -231,19 +224,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1596417896097</updated>
-      <workItem from="1596417904662" duration="13850000" />
+      <workItem from="1596417904662" duration="28292000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13850000" />
+    <option name="totallyTimeSpent" value="28292000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33087248" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
@@ -252,7 +245,7 @@
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -269,20 +262,34 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/KeyWordsFrameWork/util/DirAndTime.py">
+    <entry file="file://$PROJECT_DIR$/KeyWordsFrameWork/testScripts/TestSendMailWithAttachment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="1055">
+          <caret line="109" column="40" selection-start-line="109" selection-start-column="40" selection-end-line="109" selection-end-column="40" />
           <folding>
-            <element signature="e#126#141#0" expanded="true" />
+            <element signature="e#125#153#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/KeyWordsFrameWork/config/VarConfig.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="81">
+          <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/selenium/webdriver/chrome/webdriver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/selenium/webdriver/remote/webelement.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="155" lean-forward="true" selection-start-line="155" selection-end-line="155" />
         </state>
       </provider>
     </entry>
@@ -296,13 +303,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/selenium/webdriver/remote/webdriver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="1015" column="8" selection-start-line="1015" selection-start-column="8" selection-end-line="1015" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/KeyWordsFrameWork/action/PageAction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -310,20 +310,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/KeyWordsFrameWork/testScripts/TestSendMailWithAttachment.py">
+    <entry file="file://C:/Python27/Lib/site-packages/selenium/webdriver/remote/webdriver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="112" column="56" lean-forward="true" selection-start-line="112" selection-start-column="56" selection-end-line="112" selection-end-column="56" />
+        <state relative-caret-position="-1010">
+          <caret line="180" column="31" selection-start-line="180" selection-start-column="22" selection-end-line="180" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KeyWordsFrameWork/util/DirAndTime.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2">
+          <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
           <folding>
-            <element signature="e#125#153#0" expanded="true" />
+            <element signature="e#126#141#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataDrivenFrameWork/mail_126.py">
+    <entry file="file://$PROJECT_DIR$/DataDrivenFrameWork/luban.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="75" column="8" lean-forward="true" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
+        <state relative-caret-position="137">
+          <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+          <folding>
+            <element signature="e#102#132#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

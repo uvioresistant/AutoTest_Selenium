@@ -12,7 +12,7 @@ from config.VarConfig import screenPicturesDir
 
 # 获取当前的日期
 def getCurrentDate():
-    timeTup = time.lcaltime()
+    timeTup = time.localtime()
     currentDate = str(timeTup.tm_year) + "-" + str(timeTup.tm_mon) + "-" + str(timeTup.tm_mday)
     return currentDate
 

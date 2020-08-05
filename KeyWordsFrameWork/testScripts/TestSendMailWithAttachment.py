@@ -117,7 +117,15 @@ def TestSendMailWithAttachment():
     press_enter_key()
     waitFrameToBeAvailableAndSwitchToIt("xpath", "//iframe[@tabindex=1]")
     print u"写入邮件正文"
-
+    input_string("xpath", "/html/body", u"发给光荣之路的一封信")
+    switch_to_default_content()
+    print u"写信完成"
+    print u"开始发送邮件..."
+    click("xpath", "//header//span[text() = '发送']")
+    time.sleep(3)
+    assert_string_in_pagesource(u"发送成功")
+    print u"邮件发送成功"
+    close_browser()
 
 
 if __name__ == '__main__':

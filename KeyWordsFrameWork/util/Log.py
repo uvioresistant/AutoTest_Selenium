@@ -25,5 +25,8 @@ def info(message):
 
 
 def warning(message):
-    logger.info(message)
+    logger.warning(message)
+
+def error(message):
+    logger.error(message)
 

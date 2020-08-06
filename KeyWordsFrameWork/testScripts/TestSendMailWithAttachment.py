@@ -15,6 +15,7 @@ from action.PageAction import *
 import time
 from util.ParseExcel import ParseExcel
 from config.VarConfig import *
+from util.Log import *
 import traceback
 
 
@@ -44,7 +45,7 @@ def writeTestResult(sheetObj, rowNo, colsNo, testResult, errorInfo=None, picPath
         else:
             excelObj.writeCell(sheetObj, content=picPath, rowNo=rowNo, colsNo=testStep_errorPic)
     except Exception, e:
-        print u"写excel出错, ", traceback.print_exc()
+        error("写excel出错, ", traceback.print_exc())
 
 def TestSendMailWithAttachment():
     try:
@@ -66,7 +67,7 @@ def TestSendMailWithAttachment():
                 caseRow = excelObj.getRow(caseSheet, idx + 2)
                 # 获取第idx+2行的"步骤sheet"单元格内容
                 caseStepSheetName = caseRow[testCase_testStepSheetName - 1].value
-                print caseStepSheetName
+                # print caseStepSheetName
                 # 根据用例步骤名获取步骤sheet对象
                 stepSheet = excelObj.getSheetByName(caseStepSheetName)
                 # 获取步骤sheet中步骤数
@@ -74,7 +75,7 @@ def TestSendMailWithAttachment():
                 # print stepNum
                 # 记录测试用例i的步骤成功数
                 successfulSteps = 0
-                print u"开始执行用例 %s " % caseRow[testCase_testCaseName - 1].value
+                info(u"开始执行用例 %s " % caseRow[testCase_testCaseName - 1].value)
                 for step in xrange(2, stepNum + 1):
                     # 因为步骤sheet中的第一行为标题行，无需执行
                     # 获取步骤sheet中第step行对象
@@ -125,13 +126,13 @@ def TestSendMailWithAttachment():
                             stepSheet, step, "caseStep",
                             "faild", errorInfo, capturePic
                         )
-                        print u"步骤 %s 执行失败" % stepRow[testStep_testStepDescribe - 1].value
+                        error(u"步骤 %s 执行失败" % stepRow[testStep_testStepDescribe - 1].value)
                     else:
                         # 在测试步骤Sheet中写入成功信息
                         writeTestResult(stepSheet, step, "caseStep", "pass")
                         # 每成功一步，successfulSteps变量自增1
                         successfulSteps += 1
-                        print u"步骤 %s 执行通过!" % stepRow[testStep_testStepDescribe -1].value
+                        info(u"步骤 %s 执行通过!" % stepRow[testStep_testStepDescribe -1].value)
 
                 if successfulSteps == stepNum -1:
                     # 当测试用例sheet中所有的步骤都执行成功，可认为此测试用例执行通过，然后将所有成功信息写入测试用例表中，
@@ -140,11 +141,11 @@ def TestSendMailWithAttachment():
                     successfulCase +=1
                 else:
                     writeTestResult(caseSheet, idx+2, "testCase", "faild")
-                    print u"共%d条用例，%d需要被执行，本次执行通过%d条"\
-                          % (len(isExecuteColumn)-1, requiredCase, successfulCase)
+                    debug("共%d条用例，%d需要被执行，本次执行通过%d条"\
+                          % (len(isExecuteColumn)-1, requiredCase, successfulCase))
     except Exception as e:
         # 打印详细的异常堆栈信息
-        print traceback.print_exc()
+        error(traceback.print_exc())
 
 
 if __name__ == '__main__':

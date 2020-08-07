@@ -1,7 +1,14 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+"""
+@author:fengg
+@file:ClipboardUtil.py
+@time:2020/08/07
+"""
 # !/usr/bin/env python
 # -- coding: utf-8 --
-# title = '' 
-# author = '20991' 
+# title = ''
+# author = '20991'
 # mtime = '2020/8/2'
 __author__ = 'YourName'
 

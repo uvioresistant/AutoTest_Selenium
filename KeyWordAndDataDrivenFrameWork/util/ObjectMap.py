@@ -1,11 +1,10 @@
-# !/usr/bin/env python
-# -- coding: utf-8 --
-# title = '' 
-# author = '20991' 
-# mtime = '2020/7/25'
-__author__ = 'YourName'
-
-import sys
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+"""
+@author:fengg
+@file:ObjectMap.py
+@time:2020/08/07
+"""
 from selenium.webdriver.support.ui import WebDriverWait
 
 # 获取单个页面元素对象

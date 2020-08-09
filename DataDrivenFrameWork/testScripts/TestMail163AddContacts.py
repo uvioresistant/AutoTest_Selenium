@@ -58,7 +58,7 @@ from config.VarConfig import *
 from appModules.LoginAction import LoginAction
 from appModules.AddContactPersonAction import AddContactPerson
 import traceback
-from time import sleep
+from time import sleep_
 
 
 # 设置此次测试的环境编码为utf-8

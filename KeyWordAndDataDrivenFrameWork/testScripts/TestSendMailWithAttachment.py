@@ -91,122 +91,51 @@ def TestSendMailWithAttachment():
     # 设定为星标联系人
     getElement(driver, "xpath", "//span[text()='设为星标联系人']/preceding - sibling::span/b").click()
     mobile = getElement(driver, "xpath", "//*[@id='iaddress_TEL_wrap']//dd/input")
-
-
-    driver.find_element_by_xpath('//*[@id="_mail_emailcontainer_0_315"]').send_keys("xxx")
-    # 写入邮件主题 "//dir[@aria - label = '邮件主题输入框，请输入邮件主题']/input"
-    driver.find_element_by_xpath('//*[@id="1595685703525_subjectInput"]').send_keys(u"新邮件")
-    # 切换进frame控件 "iframe[@tabindex = 1]"
-    driver.switch_to.frame(driver.find_element_by_xpath('//*[@id="_mail_editor_0_321"]/div[1]/div[2]/iframe'))
-    editBox = driver.find_element_by_xpath("/html/body")
-    editBox.send_keys(u"发送给光荣之路的一封信")
+    # 输入联系人手机号
+    mobile.send_keys("183xxxxxxxx")
+    # 输入备注信息
+    getElement(driver, "xpath", "//textarea").send_keys(u"朋友")
+    # 单击"确定"按钮，保存新建联系人
+    getElement(driver, "xpath", "//span[text()='确定']").click()
+    time.sleep(1)
+    assert u"lily@qq.com" in driver.page_source
+    print u"添加联系人成功"
+    time.sleep(2)
+    print u"写信..."
+    receiver = getElement(driver, "xpath", "//div[contains(@id, '_mail_emailinput')]/input")
+    # 输入收信人地址
+    receiver.send_keys("xxx")
+    subject = getElement(driver, "xpath", "//div[@aria-label='邮件主题输入框，请输入邮件主题']/input")
+    # 输入邮件主题
+    subject.send_keys(u"新邮件")
+    # 设置剪贴板内容
+    Clipboard.setText(u"d:\\a.txt")
+    # 获取剪贴板内容
+    Clipboard.getText()
+    attachment = getElement(driver, "xpath", "//div[contains(@title, '600首MP3')]")
+    # 点击上传附件链接
+    attachment.click()
+    time.sleep(3)
+    # 在上传附件Windos弹窗中粘贴剪贴板中的内容
+    KeyboardKeys.twoKeys("ctrl", "v")
+    # 模拟回车键，以便加载要上传的附件
+    KeyboardKeys.oneKey("enter")
+    # 切换进邮件正文的frame
+    wait.frameToBeAvailableAndSwitchToIt("xpath", "//iframe[@tabindex=1]")
+    body = getElement(driver, "xpath", "/html/body")
+    # 输入邮件正文
+    body.send_keys(u"发送给光荣之路的一封信")
+    # 切出邮件正文的frame框
     driver.switch_to.default_content()
     print u"写信完成"
     # 写信完成 "//header//span[text() = '发送']"
-    driver.find_element_by_xpath('//*[@id="_mail_button_8_322"]/span[2]').click()
+
+    getElement(driver, "xpath", "//header//span[text()='发送']").click()
     print u"开始发送邮件..."
     time.sleep(3)
     assert u"发送成功" in driver.page_source
     print u"邮件发送成功"
     driver.quit()
-    try:
-        # 根据Excel文件中的sheet名获取sheet对象
-        caseSheet = excelObj.getSheetByName(u"测试用例")
-        # 获取测试用例sheet中是否执行列对象
-        isExecuteColumn = excelObj.getColumn(caseSheet, testCase_isExecute)
-        # 记录执行成功的测试用例个数
-        successfulCase = 0
-        # 记录需要执行的用例个数
-        requiredCase = 0
-        for idx, i in enumerate(isExecuteColumn[1:]):
-            # 因为用例sheet中第一行为标题行，无需执行
-            # print i.value
-            # 循环遍历"测试用例"表中的测试用例，执行被设置为执行的用例
-            if i.value.lower() == "y":
-                requiredCase += 1
-                # 获取"测试用例"表中第idx+2行数据
-                caseRow = excelObj.getRow(caseSheet, idx + 2)
-                # 获取第idx+2行的"步骤sheet"单元格内容
-                caseStepSheetName = caseRow[testCase_testStepSheetName - 1].value
-                # print caseStepSheetName
-                # 根据用例步骤名获取步骤sheet对象
-                stepSheet = excelObj.getSheetByName(caseStepSheetName)
-                # 获取步骤sheet中步骤数
-                stepNum = excelObj.getRowsNumber(stepSheet)
-                # print stepNum
-                # 记录测试用例i的步骤成功数
-                successfulSteps = 0
-                info(u"开始执行用例 %s " % caseRow[testCase_testCaseName - 1].value)
-                for step in xrange(2, stepNum + 1):
-                    # 因为步骤sheet中的第一行为标题行，无需执行
-                    # 获取步骤sheet中第step行对象
-                    stepRow = excelObj.getRow(stepSheet, step)
-                    # 获取关键字作为调用的函数名
-                    keyWord = stepRow[testStep_keyWords - 1].value
-                    # 获取操作元素定位方式作为调用的函数的参数
-                    locationType = stepRow[testStep_locationType - 1].value
-                    # 获取操作元素的定位表达式作为调用函数的参数
-                    locatorExpressino = stepRow[testStep_locatorExpression - 1].value
-                    # 获取操作值作为调用函数的参数
-                    operateValue = stepRow[testStep_operateValue -1 ].value
-
-                    # 将操作值为数字类型的数据转成字符串类型，方便字符串拼接
-                    if isinstance(operateValue, long):
-                        operateValue = str(operateValue)
-                    # print keyWord, locationType, locatorExpressino, operateValue
-                    expressionStr = ""
-                    # 构造需要执行的python语句，
-                    # 对应的是PageAction.py中的页面动作函数调用的字符串表示
-                    if keyWord and operateValue and locationType is None and locatorExpressino is None:
-                        expressionStr = keyWord.strip() + "(u'" + operateValue + "')"
-                    elif keyWord and operateValue is None and locationType is None and locatorExpressino is None:
-                        expressionStr = keyWord.strip() + "()"
-                    elif keyWord and locationType and operateValue and locatorExpressino is None:
-                        expressionStr = keyWord.strip() + "('" + locationType.strip() +"',u'" + operateValue + "')"
-                    elif keyWord and locationType and locatorExpressino and operateValue:
-                        expressionStr = keyWord.strip() + "', '" + locatorExpressino.replace("'", '"').strip()\
-                                        + "',u'" + operateValue + "')"
-                    elif keyWord and locationType and locatorExpressino and operateValue is None:
-                        expressionStr = keyWord.strip() + "('" + locationType.strip() + "', '"\
-                                        + locatorExpressino.replace("'", '"').strip() + "')"
-                    # print expressionStr
-                    try:
-                        # 通过eval函数，将拼接的页面动作和函数调用的字符串
-                        # 当成有效的python表达式执行 从而执行测试步骤的sheet中，关键字在ageAction.py中对应的映射方法
-                        # 从而完成对页面元素的操作
-                        eval(expressionStr)
-                        # 在测试执行时间列写入执行时间
-                        excelObj.writeCellCurrentTime(stepSheet, rowNo=step, colsNo=testStep_runTime)
-                    except Exception as e:
-                        # 截取异常屏幕图片
-                        capturePic = capture_screen()
-                        # 获取详细的异常堆栈信息
-                        errorInfo = traceback.format_exc()
-                        # 在测试步骤Sheet中写入失败信息
-                        writeTestResult(
-                            stepSheet, step, "caseStep",
-                            "faild", errorInfo, capturePic
-                        )
-                        error(u"步骤 %s 执行失败" % stepRow[testStep_testStepDescribe - 1].value)
-                    else:
-                        # 在测试步骤Sheet中写入成功信息
-                        writeTestResult(stepSheet, step, "caseStep", "pass")
-                        # 每成功一步，successfulSteps变量自增1
-                        successfulSteps += 1
-                        info(u"步骤 %s 执行通过!" % stepRow[testStep_testStepDescribe -1].value)
-
-                if successfulSteps == stepNum -1:
-                    # 当测试用例sheet中所有的步骤都执行成功，可认为此测试用例执行通过，然后将所有成功信息写入测试用例表中，
-                    # 否则写入失败信息
-                    writeTestResult(caseSheet, idx+2, "testCase", "pass")
-                    successfulCase +=1
-                else:
-                    writeTestResult(caseSheet, idx+2, "testCase", "faild")
-                    debug("共%d条用例，%d需要被执行，本次执行通过%d条"\
-                          % (len(isExecuteColumn)-1, requiredCase, successfulCase))
-    except Exception as e:
-        # 打印详细的异常堆栈信息
-        error(traceback.print_exc())
 
 
 if __name__ == '__main__':

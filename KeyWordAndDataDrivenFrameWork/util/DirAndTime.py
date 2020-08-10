@@ -5,7 +5,7 @@
 # mtime = '2020/8/3'
 __author__ = 'YourName'
 
-import time, os
+import os, time
 from datetime import datetime
 from config.VarConfig import screenPicturesDir
 

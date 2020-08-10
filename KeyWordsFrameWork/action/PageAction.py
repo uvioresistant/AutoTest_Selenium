@@ -232,7 +232,7 @@ def waitFrameToBeAvailableAndSwitchToIt(locationType, locatorExpression, *arg):
         raise e
 
 
-def waitvisibilityOfElementLocated(locationType, locatorExpression, *arg):
+def waitVisibilityOfElementLocated(locationType, locatorExpression, *arg):
     '''显示等待页面元素出现在DOM中，并且可见，存在返回该页面元素对象'''
     global waitUtil
     try:

@@ -15,7 +15,7 @@ class ParseExcel(object):
     def __init__(self):
         self.workbook = None
         self.excelFile = None
-        self.font = Font(color= None) # 设置字体颜色
+        self.font = Font(color=None)  # 设置字体颜色
         # 颜色对应的RGB值
         self.RGBDict = {'red': 'FFFF3030', 'green': 'FF008B00'}
 
@@ -110,7 +110,7 @@ class ParseExcel(object):
         else:
             raise Exception("Insufficient Coordinates of cell !")
 
-    def writeCell(self, sheet, content, coordinate=None, rowNo = None, colsNo=None, style=None):
+    def writeCell(self, sheet, content, coordinate=None, rowNo=None, colsNo=None, style=None):
         # 根据单元格在Excel中的编码坐标或者数字索引坐标，向单元格中写入数据，
         # 下标从1开始，参数style表示字体的颜色的名字，如red，green
         if coordinate is not None:
@@ -132,7 +132,7 @@ class ParseExcel(object):
         else:
             raise Exception("Insufficient Coordinates of cell !")
 
-    def writeCellCurrentTime(self, sheet, coordinate=None, rowNo = None, colsNo=None):
+    def writeCellCurrentTime(self, sheet, coordinate=None, rowNo=None, colsNo=None):
         # 写入当前的时间，下标从1开始
         now = int(time.time())  # 显示为时间戳
         timeArray = time.localtime(now)
@@ -161,13 +161,11 @@ if __name__ == "__main__":
     print "通过index序号获取sheet对象的名字: ", pe.getSheetByIndex(0).title
     sheet = pe.getSheetByIndex(0)
     print type(sheet)
-    print pe.getRowsNumber(sheet) # 获取最大行号
-    print pe.getColsNumber(sheet) # 获取最大列号
-    rows = pe.getRow(sheet, 1) # 获取第一行
+    print pe.getRowsNumber(sheet)  # 获取最大行号
+    print pe.getColsNumber(sheet)  # 获取最大列号
+    rows = pe.getRow(sheet, 1)  # 获取第一行
     for i in rows:
         print i.value
     # 获取第一行第一列单元格内容
     pe.writeCell(sheet, u'我爱祖国', rowNo=10, colsNo=10)
     pe.writeCellCurrentTime(sheet, rowNo=10, colsNo=11)
-
-

@@ -43,8 +43,3 @@ class Clipboard(object):
         w.SetClipboardData(win32con.CF_UNICODETEXT, aString)
         # 关闭剪贴板
         w.CloseClipboard()
-
-
-def main(argv):
-    """Do someting..."""
-    return 0

@@ -10,42 +10,9 @@ from util.KeyBoardUtil import KeyboardKeys
 from util.ClipboardUtil import Clipboard
 from util.WaitUtil import WaitUtil
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from action.PageAction import *
 import time
-# from util.ParseExcel import ParseExcel
-# from config.VarConfig import *
-# from util.Log import *
-# import traceback
-#
-#
-# # 创建解析Excel对象
-# excelObj = ParseExcel()
-# # 将Excel数据文件加载到内存
-# excelObj.loadWorkBook(dataFilePath)
-#
-#
-# # 用例或用例步骤执行结束后，向Excel中写执行结果信息
-# def writeTestResult(sheetObj, rowNo, colsNo, testResult, errorInfo=None, picPath=None):
-#     # 测试通过结果信息为绿色，失败为红色
-#     colorDict = {"pass": "green", "faild": "red"}
-#     # 因为"测试用例"工作表和"用例步骤sheet表"中都有测试执行时间和测试结果列，定义此字典对象是为了区分具体应该写哪个工作表
-#     colsDict = {
-#         "testCase": [testCase_runTime, testCase_testResult],
-#         "caseStep": [testStep_runTime, testStep_testResult]
-#     }
-#     try:
-#         # 在测试步骤sheet中，写入测试时间
-#         excelObj.writeCellCurrentTime(sheetObj, rowNo=rowNo, colsNo=colsDict[colsNo][0])
-#         # 在测试步骤sheet中，写入测试结果
-#         excelObj.writeCell(sheetObj, content=testResult, rowNo=rowNo, colsNo=colsDict[colsNo][1], style=colorDict[testResult])
-#         if errorInfo and picPath:
-#             # 在测试步骤sheet中，写入异常信息
-#             excelObj.writeCell(sheetObj, content=errorInfo, rowNo=rowNo, colsNo=testStep_errorInfo)
-#         else:
-#             excelObj.writeCell(sheetObj, content=picPath, rowNo=rowNo, colsNo=testStep_errorPic)
-#     except Exception, e:
-#         error("写excel出错, ", traceback.print_exc())
+
 
 def TestSendMailWithAttachment():
     print u"启动Chrome浏览器"

@@ -8,6 +8,7 @@
 from . import *
 from . import CreateContacts
 from WriteTestResult import writeTestResult
+from util.Log import *
 
 
 def TestSendMailAndCreateContacts():
@@ -30,9 +31,9 @@ def TestSendMailAndCreateContacts():
                 useFrameWorkName = excelObj.getCellOfValue(caseSheet, rowNo=idx+2, colsNo=testCase_frameWorkName)
                 # 获取测试用例表中，第idx+1行中执行用例的步骤sheet名
                 stepSheetName = excelObj.getCellOfValue(caseSheet, rowNo=idx+2, colsNo=testCase_testStepSheetName)
-                print "----", stepSheetName
+                logging.info("----", stepSheetName)
                 if useFrameWorkName == u"数据":
-                    print u"*****调用数据驱动******"
+                    logging.info(u"*****调用数据驱动******")
                     # 获取测试用例表中，第idx+1行，执行框架为数据驱动的用例所使用的数据sheet名
                     dataSheetName = excelObj.getCellOfValue(caseSheet, rowNo=idx+2, colsNo=testCase_dataSourceSheetName)
                     # 获取第idx+1行测试用例的步骤sheet对象
@@ -42,18 +43,18 @@ def TestSendMailAndCreateContacts():
                     # 通过数据驱动框架执行添加联系人
                     result = CreateContacts.dataDriverFun(dataSheetObj, stepSheetObj)
                     if result:
-                        print u"用例%s 执行成功" % caseName
+                        logging.info(u"用例%s 执行成功" % caseName)
                         successfulCase += 1
                         writeTestResult(caseSheet, rowNo=idx+2, colsNo="testCase", testResult="pass")
                     else:
-                        print u"用例%s 执行失败" % caseName
+                        logging.info(u"用例%s 执行失败" % caseName)
                         writeTestResult(caseSheet, rowNo=idx+2, colsNo="testCase", testResult="faild")
                 elif useFrameWorkName == u"关键字":
-                    print u"*****调用关键字驱动******"
+                    logging.info(u"*****调用关键字驱动******")
                     caseStepObj = excelObj.getSheetByName(stepSheetName)
                     stepNums = excelObj.getRowsNumber(caseStepObj)
                     successfulSteps = 0
-                    print u"测试用例共%s步" % stepNums
+                    logging.info(u"测试用例共%s步" % stepNums)
                     for index in xrange(2, stepNums + 1):
                         # 因为用例sheet中第一行为标题行，无须执行
                         stepRow = excelObj.getRow(caseStepObj, index)
@@ -82,7 +83,7 @@ def TestSendMailAndCreateContacts():
                             # 从而执行测试步骤的sheet中关键字在ageAction.py中对应的映射方法，来完成对页面元素的操作
                                 eval(runStr)
                         except Exception as e:
-                            print u"执行步骤 %s 发生异常" % stepRow[testStep_testStepDescribe - 1].value
+                            logging.error(u"执行步骤 %s 发生异常" % stepRow[testStep_testStepDescribe - 1].value)
                             # 截图异常屏幕图片
                             capturePic = capture_screen()
                             # 获取详细的异常堆栈信息
@@ -91,21 +92,21 @@ def TestSendMailAndCreateContacts():
                                             errorInfo=str(errorInfo), picPath=capturePic)
                         else:
                             successfulSteps += 1
-                            print u"执行步骤 %s 成功" % stepRow[testStep_testStepDescribe - 1].value
+                            logging.info(u"执行步骤 %s 成功" % stepRow[testStep_testStepDescribe - 1].value)
                             writeTestResult(caseStepObj, rowNo=index, colsNo="caseStep", testResult="pass")
 
                     if successfulSteps == stepNums - 1:
                         successfulCase += 1
-                        print u"用例%s执行通过" % caseName
+                        logging.info(u"用例%s执行通过" % caseName)
                         writeTestResult(caseSheet, rowNo=idx + 2, colsNo="testCase", testResult="pass")
                     else:
-                        print u"用例%s执行失败" % caseName
+                        logging.info(u"用例%s执行失败" % caseName)
                         writeTestResult(caseSheet, rowNo=idx + 2, colsNo="testCase", testResult="faild")
                         # 清空不需要执行用例的执行时间和执行结果，异常信息，异常图片单元格
                         writeTestResult(caseSheet, rowNo=idx+2, colsNo="testCase", testResult="faild")
-        print u"共%d条用例, %d条需要被执行，成功执行%d条" % (len(isExecuteColumn) - 1, requiredCase, successfulCase)
+        logging.info(u"共%d条用例, %d条需要被执行，成功执行%d条" % (len(isExecuteColumn) - 1, requiredCase, successfulCase))
     except Exception as e:
-            print traceback.print_exc()
+            logging.error(traceback.print_exc())
 
 
 if __name__ == "__main__":

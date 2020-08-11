@@ -7,6 +7,7 @@
 """
 from selenium.webdriver.support.ui import WebDriverWait
 
+
 # 获取单个页面元素对象
 def getElement(driver, locationType, locatorExpression):
     try:
@@ -14,6 +15,7 @@ def getElement(driver, locationType, locatorExpression):
         return element
     except Exception as e:
         raise e
+
 
 # 获取多个相同页面元素对象，以list返回
 def getElements(driver, locationType, locatorExpression):
@@ -26,6 +28,7 @@ def getElements(driver, locationType, locatorExpression):
 
 if __name__ == '__main__':
     from selenium import webdriver
+
     # 进行单元测试
     driver = webdriver.Firefox(executable_path="c:\\geckodriver.exe")
     driver.get("http://www.baidu.com")

@@ -37,7 +37,7 @@ class ParseExcel(object):
             raise e
 
     def getSheetByIndex(self, sheetIndex):
-        # 根据sheet名获取该sheet对象
+        # 根据sheet的索引号获取该sheet对象
         try:
             sheetname = self.workbook.get_sheet_by_name()[sheetIndex]
         except Exception as e:

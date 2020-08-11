@@ -61,7 +61,29 @@ def dataDriverFun(dataSourceSheetObj, stepSheetObj):
                             # 当operateValue值为"否"时，表示不单击星标联系人复选框
                             eval(runStr)
                     except Exception as e:
-                        print u"执行步骤 %s 发生异常"
+                        print u"执行步骤 %s 发生异常" % rowObj[testStep_testStepDescribe - 1].value
+                        print traceback.print_exc()
+                    else:
+                        successStep += 1
+                        print u"执行步骤 %s 成功" % rowObj[testStep_testStepDescribe -1].value
+                if stepRowNums == successStep + 1:
+                    successDatas +=1
+                    # 如果成功执行的步骤数等于步骤表中给出的步骤数，说明第idx+2行的数据执行通过，写入通过信息
+                    writeTestResult(sheetObj= dataSourceSheetObj, rowNo=idx+2, colsNo="dataSheet", testResult="pass")
+                else:
+                    # 写入失败信息
+                    writeTestResult(sheetObj=dataSourceSheetObj, rowNo=idx+2, colsNo="dataSheet", testResult="faild")
+            else:
+                # 将不需要执行的数据行的执行时间和执行结果单元格清空
+                writeTestResult(sheetObj=dataSourceSheetObj, rowNo=idx+2, colsNo="dataSheet", testResult="")
+        if requiredDatas == successDatas:
+            # 只要当成功执行的数据条数等于被设置为需要执行的数据条数，才表示调用数据驱动的测试用例执行通过
+            return 1
+        # 表示调用数据驱动的测试用例执行失败
+        return 0
+    except Exception as e:
+        raise e
+
                         
 
 

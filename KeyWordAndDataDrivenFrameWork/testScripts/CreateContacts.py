@@ -35,6 +35,8 @@ def dataDriverFun(dataSourceSheetObj, stepSheetObj):
                     # 获取关键字作为调用的函数名
                     keyWord = rowObj[testStep_keyWords - 1].value
                     # 获取操作元素定位方式作为调用的函数的参数
+                    locationType = rowObj[testStep_locationType - 1].value
+                    # 获取操作元素的定位表达式作为调用函数的参数
                     locatorExpression = rowObj[testStep_locatorExpression - 1].value
                     # 获取操作值作为调用函数的参数
                     operateValue = rowObj[testStep_operateValue -1].value
@@ -43,8 +45,65 @@ def dataDriverFun(dataSourceSheetObj, stepSheetObj):
                     if operateValue and operateValue.isalpha():
                         # 如果operateValue变量不为空，说明有操作值，从数据源表中根据坐标获取对应单元格的数据
                         coordinate = operateValue + str(idx +2)
+                        operateValue = excelObj.getCellOfValue(dataSourceSheetObj, coordinate=coordinate)
+                    # 构造需要执行的python表达式，此表达式对应的是PageAction.py文件中的页面动作函数调用的字符串表示
+                    tmpStr = "'%s', '%s'" % (testStep_locationType.lower(), locatorExpression.replace(";", '"')
+                                             ) if locationType and locatorExpression else ""
+                    if tmpStr:
+                        tmpStr += ", u'" + operateValue + "'" if operateValue else ""
+                    else:
+                        tmpStr += "u'" + operateValue + "'" if operateValue else ""
+                    runStr = keyWord + "(" + tmpStr + ")"
+                    try:
+                        # 通过eval函数，将拼接的页面动作函数，使用调用的字符串表示，当成有效的Python表达式执行，
+                        # 从而执行测试步骤的sheet中关键字在ageAction.py中对应的映射方法，来完成对页面元素的操作
+                        if operateValue != u"否":
+                            # 当operateValue值为"否"时，表示不单击星标联系人复选框
+                            eval(runStr)
+                    except Exception as e:
+                        print u"执行步骤 %s 发生异常"
+                        
+
+
     except Exception as e:
         raise e
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     pass

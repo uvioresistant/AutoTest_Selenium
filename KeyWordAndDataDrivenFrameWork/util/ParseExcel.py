@@ -65,7 +65,7 @@ class ParseExcel(object):
         # 获取sheet中某一行，返回的是这一行所有的数据内容组成的tuple,
         # 下标从1开始，sheet.rows[1]表示第一列
         try:
-            return sheet.rows[rowNo - 1]
+            return tuple(sheet.rows)[rowNo - 1]
         except Exception as e:
             raise e
 
@@ -73,7 +73,7 @@ class ParseExcel(object):
         # 获取sheet中某一列，返回的是这一列所有的数据内容组成tuple,
         # 下标从1开始，sheet.columns[1]表示第一列
         try:
-            return sheet.columns[colNo - 1]
+            return tuple(sheet.columns)[colNo - 1]
         except Exception as e:
             raise e
 

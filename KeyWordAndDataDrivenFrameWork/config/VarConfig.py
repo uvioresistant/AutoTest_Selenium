@@ -18,6 +18,7 @@ parentDirPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # 异常截图存放目录绝对路径
 screenPicturesDir = parentDirPath + "\\exceptionPictures\\"
+print screenPicturesDir
 
 # 获取数据文件存放绝对路径
 dataFilePath = parentDirPath + u"\\testData\\163邮箱发送邮件.xlsx"

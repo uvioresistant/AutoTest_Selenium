@@ -289,6 +289,7 @@ class VisitSogouByChrome(unittest.TestCase):
             option.click()
             time.sleep(1)
 
+    @unittest.skip("skipping")
     def test_operateDropList(self):
         url = "G:\\work_file\\AutoTest_From_Git\\test\\test_html.html"
         self.driver.get(url)
@@ -321,6 +322,21 @@ class VisitSogouByChrome(unittest.TestCase):
         select_element.select_by_value("shanzha")
         print select_element.all_selected_options[0].text
         self.assertEqual(select_element.all_selected_options[0].text, u"山楂")
+
+    def test_checkSelectText(self):
+        url = "G:\\work_file\\AutoTest_From_Git\\test\\test_html.html"
+        self.driver.get(url)
+        from selenium.webdriver.support.ui import Select
+        # 获取select页面元素对象
+        select_element = Select(self.driver.find_element_by_xpath("//select"))
+        # 获取所有选择项的页面元素对象
+        actual_options = select_element.options
+        # 声明一个list对象，存储下拉列表中所期望出现的文字内容
+        expect_optionList = [u"桃子", u"西瓜", u"橘子", u"猕猴桃", u"山楂", u"荔枝"]
+        # 使用map()函数获取页面中下拉列表展示的内容组成的列表对象
+        actual_optionsList = map(lambda option: option.text, actual_options)
+        # 断言期望列表对象和实际列表对象是否完全一致
+        self.assertListEqual(expect_optionList, actual_optionsList)
 
     @unittest.skip("skipping")
     def test_Handleconfirm(self):
@@ -481,7 +497,6 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
 import time
 import unittest
-
 
 # class setPageLoadTime(unittest.TestCase):
 #     def setup(self):

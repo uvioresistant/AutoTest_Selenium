@@ -1,0 +1,6 @@
+[FILE] 璺緞: G:\work_file\AutoTest_From_Git\test\utf8data 鏂囦欢澶у皬(B): 4 鍒涘缓鏃堕棿: 2020-10-13 16:41:53 淇敼鏃堕棿: 2020-10-13 16:41:53 娴忚鏃堕棿: 2020-10-13 16:41:53
+:45:45
+:02:41
+1-03-02 17:41:01
+[FILE] 璺緞: G:\work_file\AutoTest_From_Git\test\traversal_file_dir\test.txt 鏂囦欢澶у皬(B): 220 鍒涘缓鏃堕棿: 2021-03-02 17:17:55 淇敼鏃堕棿: 2021-03-02 17:17:55 娴忚鏃堕棿: 2021-03-02 17:17:55
+[FILE] 璺緞: G:\work_file\AutoTest_From_Git\test\traversal_file_dir\遍历指定文件及文件夹.py 鏂囦欢澶у皬(B): 1482 鍒涘缓鏃堕棿: 2021-03-02 17:13:26 淇敼鏃堕棿: 2021-03-02 17:13:26 娴忚鏃堕棿: 2021-03-02 17:13:26

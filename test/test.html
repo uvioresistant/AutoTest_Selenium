@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>test</title>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <title>你喜欢的水果</title>
+    <script type="text/javascript">
+        function display_alert() {
+            alert("I am an alert box!!")
+        }
+    </script>
 </head>
-<body>
-
+<input>
+    <p>请选择你爱吃的水果</p>
+    <br>
+    <select name="fruit">
+        <option id="peach" value="taozi">桃子</option>
+        <option id="watermelon" value="xigua">西瓜</option>
+    </select>
+    <br>
+    <input type="button" onclick="display_alert()" value="Display alert box" />
+    <input id="check" type="checkbox">是否喜欢吃水果?</input>
+    <br><br>
+    <input type="text" id="text" value="今年夏天西瓜相当甜!">文本框</input>
 </body>
 </html>

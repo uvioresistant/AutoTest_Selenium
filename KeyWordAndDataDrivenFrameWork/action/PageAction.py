@@ -107,7 +107,7 @@ def assert_string_in_pagesource(assertString, *arg):
     global driver
     try:
         assert assertString in driver.page_source, u"%s not found in page source!" % assertString
-    except AssertionError, e:
+    except AssertionError as e:
         raise AssertionError(e)
     except Exception as e:
         raise e
@@ -118,7 +118,7 @@ def assert_title(titleStr, *args):
     global driver
     try:
         assert titleStr in driver.title, u"%s not found in page source!" % titleStr
-    except AssertionError, e:
+    except AssertionError as e:
         raise AssertionError(e)
     except Exception as e:
         raise e
@@ -150,7 +150,7 @@ def switch_to_frame(locationType, frameLocatorExpression, *arg):
             driver, locationType, frameLocatorExpression
         ))
     except Exception as e:
-        print "frame error"
+        print('frame error')
         raise e
 
 

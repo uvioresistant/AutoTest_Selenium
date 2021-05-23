@@ -22,7 +22,7 @@ class ParseExcel(object):
     def loadWorkBook(self, excelPathAndName):
         # 将Excel文件加载到内存，并获取其workbook对象
         try:
-            self.workbook = openpyxl.load_workbook(excelPathAndName)
+            self.workbook = openpyxl.load_workbook(excelPathAndName, read_only=True)
         except Exception as e:
             raise e
         self.excelFile = excelPathAndName
